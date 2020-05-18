@@ -15,7 +15,7 @@ $('body')
   
 
 function render_show_details(show_name) {
-  var render_template = $('#cardscript').html('<b>' + show_name);
+    var render_template = $('#cardscript').html('<b>' + show_name);
 }
 
 function render_image(show_name){
@@ -48,14 +48,16 @@ function render_template() {
 }
 
 function render_card_template() {
+    
     var filtered_data = prog_data;
     if(get_filter() != undefined) {
     if(get_filter().split('$$')[1] != "media") {
       filtered_data = _.filter(prog_data, function(o) { return o[get_filter().split('$$')[0]] == get_filter().split('$$')[1] });
-      }
-      }
+    }
+    }
     final_data = _.reverse(_.orderBy(filtered_data, ['Impressions']));
     final_data = final_data.slice(0, 5)
+    console.log(final_data)
     // console.log(_.reverse(_.orderBy(filtered_data, ['Impressions'])))
     return final_data
 }

@@ -25,7 +25,7 @@
     <div class="card">
       <!-- <div class="card-header"></div> -->
   <div class="card-body"> 
-    <h6 class="card-title text-secondary">Top TV Channels of Different Generes</h6>
+    <h6 class="card-title text-secondary">Top TV Channels of Different Genres</h6>
     <div id="circlechart"></div>
   </div>
 </div>
@@ -39,9 +39,8 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="card-body mycontent-left" id="loaddata">
-                  <h6 class="card-title text-secondary">Top five TV shows of each Generes</h6>
+                  <h6 class="card-title text-secondary">Top five TV shows of each Genres</h6>
                   <div id="donutchart">
-                    <!-- <div class="card" id="donutmsg mt-5">No Data Available for this genere</div> -->
                   </div>
                 </div>
               </div>
@@ -49,18 +48,17 @@
                 <div class="card-body" id="cardplaceholder">
                    <h6 class="card-title text-secondary">Details</h6>
                    <!-- <img class="card-img-top pb-1" id="my_image" src="" alt="show image">  -->
-
-                   <div id="imageplaceholder"></div>
-                    <script type="text/template" id="imagescript">
-                      
-                       <img class="card-img-top pb-1" src="<%= 'static/images/'+ srcdata + '.jpg' %>"/>
-                    </script>
-                  <!--  &nbsp; -->
-                   <div class="card">
-                      <div id="cardscript"> Click on the Show listed on Donut to see the details: </div>
-                   </div>
-
-                </div>
+                  <div id="newimage">
+                    <div id="imageplaceholder"></div>
+                      <script type="text/template" id="imagescript">
+                        
+                         <img class="card-img-top pb-1" src="<%= 'static/images/'+ srcdata + '.jpg' %>"/>
+                      </script>
+                    <!--  &nbsp; -->
+                        <div class="alert alert-primary"role="alert" id="cardscript"> Click on the Show listed on Donut to see the details: 
+                        </div>
+                    </div>
+                  </div>
 
               </div>  
             </div>  
@@ -75,7 +73,7 @@
         <table class="table table-striped scroll" id="mydatatable">
         <thead class="tablehead">
           <tr>
-            <th scope="col">Genere</th>
+            <th scope="col">Genre</th>
             <th scope="col">ChannelName</th>
             <th scope="col">Programs</th>
             <th scope="col">Rank</th>

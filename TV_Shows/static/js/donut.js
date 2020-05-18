@@ -4,18 +4,23 @@ function render_donut(selector, data){
           margin = {top: 70, bottom: 40, left:130},
           width = $(selector).width() 
           height = 170 - margin.top 
-          radius = Math.min(width, height) / 1
+          radius = Math.min(width, height) / 1;
+
 
     svg = svg.append('svg')
             .attr('width', "100%")
             .attr('height', height + margin.top + margin.bottom)
             .attr('viewBox', "0 0 " + ($(selector).width()) + " " + (height +  margin.bottom))
+
+    if(data == '')
+      $(selector).html('<div class="alert alert-warning role=alert">' + 'Sorry! No data available for this Genre.' + '</div>')
+      $( "#newimage" ).load(window.location.href + " #newimage" );     
                   
     var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     var legendRectSize = (radius * 0.1);
     var legendSpacing = radius * 0.1;
     
-var color = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"]);
+var color = d3.scaleOrdinal(["red", "orange", "#FFD700", "#FFFF66", "#FFFFCC"]);
 
 var pie = d3.pie()
     .sort(null)
@@ -56,7 +61,7 @@ var label = d3.arc()
             var vert = i * height - offset;
             return 'translate(' + horz + ',' + vert + ')';
         });
-
+  var color = d3.scaleOrdinal(["red", "orange", "#FFD700", "#FFFF66", "#FFFFCC"]);
     legend.append('rect')
         // .attr('width', legendRectSize)
         // .attr('height', legendRectSize)

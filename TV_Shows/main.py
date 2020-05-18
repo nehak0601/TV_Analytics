@@ -23,7 +23,7 @@ def home():
 	# rank = prog[['Rank','Programme']]
 
 	if week == 'week':
-		prog = prog[prog['Week'] == max(prog['Week'])]
+		prog = prog[prog['Week'] == 18]
 	else:
 		prog=prog[prog['Week']== int(week)] 	
 
@@ -32,7 +32,7 @@ def home():
 	df = pd.read_csv(abs_file_path + "/top_channels.csv")
 	
 	if week == 'week':
-		df = df[df['Week'] == max(df['Week'])]
+		df = df[df['Week'] == 18]
 	else:
 		df = df[df['Week'] == int(week)]
 
