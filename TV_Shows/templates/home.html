@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>TV Analytics</title>
+  </head>
+  <body>
+    
+    {% extends "template.html" %}
+    {% block content %}
+
+    <script type="text/javascript">
+      var prog_data = JSON.parse({{ prog_data|tojson }});
+    </script>
+  
+   <!-- Access data of Circle pack data chart-->
+    <script type="text/javascript">
+      var chart1_ = {{ circle_chart.chart_data1 | safe }}
+    </script>
+    
+<div class="container-fluid">
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <!-- <div class="card-header"></div> -->
+  <div class="card-body"> 
+    <h6 class="card-title text-secondary">Top TV Channels of Different Generes</h6>
+    <div id="circlechart"></div>
+  </div>
+</div>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+            <!-- <div class="card-header">Top TV Shows </div> -->
+ 
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card-body mycontent-left" id="loaddata">
+                  <h6 class="card-title text-secondary">Top five TV shows of each Generes</h6>
+                  <div id="donutchart">
+                    <!-- <div class="card" id="donutmsg mt-5">No Data Available for this genere</div> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card-body" id="cardplaceholder">
+                   <h6 class="card-title text-secondary">Details</h6>
+                   <!-- <img class="card-img-top pb-1" id="my_image" src="" alt="show image">  -->
+
+                   <div id="imageplaceholder"></div>
+                    <script type="text/template" id="imagescript">
+                      
+                       <img class="card-img-top pb-1" src="<%= 'static/images/'+ srcdata + '.jpg' %>"/>
+                    </script>
+                  <!--  &nbsp; -->
+                   <div class="card">
+                      <div id="cardscript"> Click on the Show listed on Donut to see the details: </div>
+                   </div>
+
+                </div>
+
+              </div>  
+            </div>  
+          </div>
+      </div>
+
+    </div>
+    <div class="row" id="table_div">
+      <div class="col-md-12 scroll" id="tableplaceholder">
+      </div>
+      <script type="text/template" id="tablescript">
+        <table class="table table-striped scroll" id="mydatatable">
+        <thead class="tablehead">
+          <tr>
+            <th scope="col">Genere</th>
+            <th scope="col">ChannelName</th>
+            <th scope="col">Programs</th>
+            <th scope="col">Rank</th>
+            <th scope="col">Impressions</th>
+            <th scope="col">Week</th>
+            
+          </tr>
+        </thead>
+        <tbody class="tablerow">
+          <% _.each(tabledata, function(row) { %>
+          <tr>
+            
+            <td><%= row['Genere'] %></td>
+            <td><%= row['Channel Name'] %></td>
+            <td><%= row['Programme'] %></td>
+            <td><%= row['Rank'] %></td>
+            <td><%= row['Impressions'] %></td>
+            <td><%= row['Week'] %></td>
+          </tr> 
+          <% }) %>
+        </tbody>
+        </table>
+      </script>  
+    </div>
+
+  </div> 
+</div>
+</div>
+
+ 
+
+    {% endblock %}
+  </body>
+</html>

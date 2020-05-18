@@ -1,0 +1,74 @@
+body {
+  margin: 10px;
+  background-color: #fbfbfb;
+}
+.container-fluid{
+  margin-top: 60px !important;
+}
+.node {
+  cursor: pointer;
+}
+
+.node:hover {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node--leaf {
+  fill: #F5FCFB;
+}
+
+.label {
+  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;*/
+}
+
+.scroll {
+    max-height: 270px;
+    overflow-y: auto;
+
+}
+
+.mycontent-left {
+  border-right: 1px solid #D4D4D4;
+}
+
+.tablehead{
+  background-color: #510C66;
+  color:white;
+  padding-top: 100px;
+  font-size:13px;
+}
+.tablerow{
+  font-size: 13px;
+}
+#table_div{
+  margin-top: 5px;
+}
+
+#cardscript{
+  text-align: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #510C66; 
+}
+
