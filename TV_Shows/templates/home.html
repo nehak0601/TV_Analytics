@@ -45,9 +45,8 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="card-body" id="cardplaceholder">
-                   <h6 class="card-title text-secondary">Details</h6>
-                   <!-- <img class="card-img-top pb-1" id="my_image" src="" alt="show image">  -->
+                <div class="card-body mt-3" id="cardplaceholder">
+                   <!-- <h6 class="card-title text-secondary">Details</h6> -->
                   <div id="newimage">
                     <div id="imageplaceholder"></div>
                       <script type="text/template" id="imagescript">
@@ -86,8 +85,8 @@
           <% _.each(tabledata, function(row) { %>
           <tr>
             
-            <td><%= row['Genere'] %></td>
-            <td><%= row['Channel Name'] %></td>
+            <td><%= row['Genere'] %> &nbsp &nbsp &nbsp &nbsp &nbsp </td>
+            <td>&nbsp &nbsp &nbsp<%= row['Channel Name'] %></td>
             <td><%= row['Programme'] %></td>
             <td><%= row['Rank'] %></td>
             <td><%= row['Impressions'] %></td>

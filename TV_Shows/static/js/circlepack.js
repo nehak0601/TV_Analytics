@@ -104,6 +104,3 @@ $('#circlechart circle').on('click', function(){
   render_donut('#donutchart', render_card_template());
 })
 }
-
-
-

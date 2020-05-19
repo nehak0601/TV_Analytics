@@ -13,14 +13,13 @@ rel_path = "csv_data"
 abs_file_path = os.path.join(script_dir, rel_path)
 # abs_file_path1 = os.path.join(script_dir, rel_path1)
 
-
 app = Flask(__name__)
 
 @app.route("/")
 def home():
 	week = request.args.get('week', 'week')
 	prog = pd.read_csv(abs_file_path + "/top_programs.csv")
-	# rank = prog[['Rank','Programme']]
+	# prog['Programme'] = prog['Programme'].str[:15]+'.'+'.'+'.'
 
 	if week == 'week':
 		prog = prog[prog['Week'] == 18]
@@ -69,16 +68,6 @@ def week_names():
   week_list = week_list[: len(week_list) - K] 
 
   return week_list
-
-# def images_names():
-
-# 	# get data file names
-# 	file_name = os.listdir(abs_file_path1) 
-# 	file_name = [csv[:-4] for csv in file_name]
-# 	image_name=pd.DataFrame(file_name)
-# 	image_name.to_json(orient='records')
-
-# 	return image_name
 
 
 

@@ -57,7 +57,7 @@ function render_card_template() {
     }
     final_data = _.reverse(_.orderBy(filtered_data, ['Impressions']));
     final_data = final_data.slice(0, 5)
-    console.log(final_data)
+    // console.log(final_data)
     // console.log(_.reverse(_.orderBy(filtered_data, ['Impressions'])))
     return final_data
 }
