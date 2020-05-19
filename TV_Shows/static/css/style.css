@@ -50,6 +50,15 @@ body {
 #cardscript{
   text-align: center;
 }
+#cardplaceholder{
+  padding-left: 0px !important;
+  padding-right: 25px !important;
+}
+table.dataTable tbody td {
+  padding-left:2px !important;
+  padding-right: 1px !important;
+} 
+
 
 /* width */
 ::-webkit-scrollbar {
