@@ -1,5 +1,6 @@
 function render_donut(selector, data){
     $(selector).empty();
+
     var svg = d3.select(selector),
           margin = {top: 70, bottom: 40, left:130},
           width = $(selector).width() 
@@ -20,7 +21,7 @@ function render_donut(selector, data){
     var legendRectSize = (radius * 0.1);
     var legendSpacing = radius * 0.1;
     
-var color = d3.scaleOrdinal(["red", "orange", "#FFD700", "#FFFF66", "#FFFFCC"]);
+var color = d3.scaleOrdinal(["#050305", "#821594","#b34ab3","#e5b8f3", "#F5EFF6"]);
 
 var pie = d3.pie()
     .sort(null)
@@ -40,7 +41,11 @@ var label = d3.arc()
       .attr("class", "arc");
   arc.append("path")
       .attr("d", path)
-      .attr("fill", function(d) { return color(d.data.Programme); })
+      .attr("fill", function(d) {
+        if (d.data.Programme.length>15) 
+          return color(d.data.Programme.slice(0,15)+'...') 
+        else
+           return color(d.data.Programme); })
       .attr('data-val', function(d) { return d.data.Programme;})
       //.on("click", function(d) { d3.event.stopPropagation(); });
   
@@ -61,7 +66,7 @@ var label = d3.arc()
             var vert = i * height - offset;
             return 'translate(' + horz + ',' + vert + ')';
         });
-  var color = d3.scaleOrdinal(["red", "orange", "#FFD700", "#FFFF66", "#FFFFCC"]);
+  var color = d3.scaleOrdinal(["#050305", "#821594","#b34ab3","#e5b8f3","#F5EFF6"]);
     legend.append('rect')
         // .attr('width', legendRectSize)
         // .attr('height', legendRectSize)
