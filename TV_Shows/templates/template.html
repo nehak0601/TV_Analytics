@@ -44,12 +44,12 @@
 
     <nav class="navbar fixed-top navbar-light bg-dark pb-1 pt-1">
       <div class="d-flex flex-row">
-       <div class><h5>TV Viewership Summary</h5></div>
+       <div class="pt-1"><h5>TV Viewership Summary</h5></div>
 
         <!-- Small button groups (default and split) -->
         <div class="pl-4">
           <div class="btn-group dropdown-font">
-          <button class="small btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="small btn btn-secondary btn-sm dropdown-toggle nav-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <b> Week {{ handler.args.get('week', '18') }} :</b> {{ week_map[handler.args.get('week', '18')] }}
           </button>
           <div class="dropdown-menu">
