@@ -44,7 +44,7 @@ var tooltip = d3.select(selector)
       .attr('href', function(d) { return depth_map[d.depth] + '$$' +d.data.name})
       .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); render_template(); render_card_template();})
     .on("mouseover", function(d){return tooltip.text(d.data.name).style("visibility", "visible");})
-  .on("mousemove", function(){return tooltip.style("top", (event.pageY-60)+"px").style("left",(event.pageX-50)+"px");})
+  .on("mousemove", function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX-50)+"px");})
   .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
   var text = g.selectAll("text")
