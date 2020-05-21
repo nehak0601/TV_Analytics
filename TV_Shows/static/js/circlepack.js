@@ -1,17 +1,17 @@
 function render_circlepack(selector, data){
 
 var svg = d3.select(selector),
-    margin = 100,
+    margin = 80,
     diameter = 515;
 
 svg = svg.append('svg')
-          .attr("width", "100%")
+          .attr("width", "85%")
+          .attr("class", "mx-5")
           .attr("height", 480);
           g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
 var color = d3.scaleOrdinal(d3.schemeCategory20)
             .range(['#510C66','#B34AD3','#E5B8F3'])
-
 // var color = d3.scaleLinear()
 //     .domain([-1, 5])
 //     .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
@@ -20,11 +20,13 @@ var color = d3.scaleOrdinal(d3.schemeCategory20)
   var pack = d3.pack()
     .size([diameter - margin, diameter - margin])
     .padding(2);
+    
 var tooltip = d3.select(selector)
   .append("div")
   .style("position", "absolute")
   .style("z-index", "10")
   .style("visibility", "hidden")
+  .attr("class", "circlepack-tooltip")
   
   root = d3.hierarchy(data)
       .sum(function(d) { return d.size; })
@@ -33,7 +35,7 @@ var tooltip = d3.select(selector)
   var focus = root,
       nodes = pack(root).descendants(),
       view;
-  var depth_map = {'0': 'media', '1': 'Languages', '2': 'Genere', '3': 'Channel Name'}
+  var depth_map = {'0': 'Media', '1': 'Languages', '2': 'Genere', '3': 'Channel Name'}
   var circle = g.selectAll("circle")
     .data(nodes)
     .enter().append("circle")
@@ -42,7 +44,7 @@ var tooltip = d3.select(selector)
       .attr('href', function(d) { return depth_map[d.depth] + '$$' +d.data.name})
       .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); render_template(); render_card_template();})
     .on("mouseover", function(d){return tooltip.text(d.data.name).style("visibility", "visible");})
-  .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+  .on("mousemove", function(){return tooltip.style("top", (event.pageY-60)+"px").style("left",(event.pageX-50)+"px");})
   .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
   var text = g.selectAll("text")

@@ -2,7 +2,7 @@ $(document).ready(function(){
       render_circlepack('#circlechart', chart1_);
       render_donut('#donutchart', render_card_template());
       render_template();
-      render_card_template();
+      //render_card_template();
 });
 
 
@@ -34,7 +34,7 @@ function render_template() {
     var template = _.template(templateStr);
     var filtered_data = prog_data;
     if(get_filter() != undefined) {
-    if(get_filter().split('$$')[1] != "media") {
+    if(get_filter().split('$$')[1] != "Media") {
       // console.log('filtered data')
       // console.log(get_filter().split('$$')[0], get_filter().split('$$')[1])
       filtered_data = _.filter(prog_data, function(o) { return o[get_filter().split('$$')[0]] == get_filter().split('$$')[1] });
@@ -42,7 +42,7 @@ function render_template() {
 
     var compiledTemplate = template({'tabledata': filtered_data});
     document.querySelector('#tableplaceholder').innerHTML = compiledTemplate
-    $('#mydatatable').DataTable();
+    $('#mydatatable').DataTable({"pageLength": 5,  "scrollY": "147px"});
     $('.dataTables_length').hide();
     // $('.dataTables_info').hide();
 }
@@ -51,10 +51,19 @@ function render_card_template() {
     
     var filtered_data = prog_data;
     if(get_filter() != undefined) {
-    if(get_filter().split('$$')[1] != "media") {
+    if(get_filter().split('$$')[1] != "Media") {
       filtered_data = _.filter(prog_data, function(o) { return o[get_filter().split('$$')[0]] == get_filter().split('$$')[1] });
     }
     }
+    filtered_data = _(filtered_data)
+                  .groupBy('Programme')
+                  .map((prog, id) => ({
+                    Programme: id,
+                    Impressions: _.sumBy(prog, 'Impressions'),
+                  }))
+                  .value()
+
+
     final_data = _.reverse(_.orderBy(filtered_data, ['Impressions']));
     final_data = final_data.slice(0, 5)
     // console.log(final_data)

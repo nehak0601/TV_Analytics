@@ -19,25 +19,30 @@ app = Flask(__name__)
 def home():
 	week = request.args.get('week', 'week')
 	prog = pd.read_csv(abs_file_path + "/top_programs.csv")
-	# prog['Programme'] = prog['Programme'].str[:15]+'.'+'.'+'.'
+	prog['Genere'] = prog['Genere'].str.upper()
+	prog['Channel Name'] = prog['Channel Name'].str.upper()
+
 
 	if week == 'week':
-		prog = prog[prog['Week'] == 18]
+		prog = prog[prog['Week'] == max(prog['Week'])]
 	else:
 		prog=prog[prog['Week']== int(week)] 	
 
 
   # Circlepack Chart:
 	df = pd.read_csv(abs_file_path + "/top_channels.csv")
-	
+	df['Genere'] = df['Genere'].str.upper()
+	df['Channel Name']=df['Channel Name'].str.upper()
+
+
 	if week == 'week':
-		df = df[df['Week'] == 18]
+		df = df[df['Week'] == max(prog['Week'])]
 	else:
 		df = df[df['Week'] == int(week)]
 
 	layers = ['Languages', 'Genere', 'Channel Name']
 
-	data1 = {"name": 'media', 'children': []}
+	data1 = {"name": 'Media', 'children': []}
 	for lang in df['Languages'].unique():
 		tmp_dict = {'name': lang, 'children':[]}
 		genre_df = df[df['Languages'] == lang]
@@ -56,7 +61,7 @@ def home():
 	data2={'chart_data1': chart_data1}
 	
 
-	return render_template("home.html", circle_chart=data2, prog_data = prog.to_json(orient='records'),week_list=week_names(), handler=request)
+	return render_template("home.html", circle_chart=data2, prog_data = prog.to_json(orient='records'),handler=request)
 
 def week_names():
 
@@ -69,7 +74,9 @@ def week_names():
 
   return week_list
 
-
+# def week_with_date():
+# 	weekdate=['Apr 27, 2020 - May 3, 2020','March 30, 2020 - April 5, 2020','April 6, 2020	- April 12, 2020','April 13, 2020 - April 19, 2020','April 20, 2020 -	April 26, 2020']
+# 	return weekdate 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(host='0.0.0.0', debug=True, port=80)

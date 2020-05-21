@@ -23,6 +23,12 @@ function render_donut(selector, data){
     
 var color = d3.scaleOrdinal(["#050305", "#821594","#b34ab3","#e5b8f3", "#F5EFF6"]);
 
+var tooltip = d3.select(selector)
+          .append('div')
+          // .attr('class', 'tooltip')
+          .style('display', 'none')
+          .attr('class','donut-tooltip')
+
 var pie = d3.pie()
     .sort(null)
     .value(function(d) { return d.Impressions; });
@@ -38,14 +44,16 @@ var label = d3.arc()
   var arc = g.selectAll(".arc")
     .data(pie(data))
     .enter().append("g")
-      .attr("class", "arc");
+      .attr("class", "arc")
+      .style("cursor", "pointer")
   arc.append("path")
       .attr("d", path)
       .attr("fill", function(d) {
-        if (d.data.Programme.length>15) 
-          return color(d.data.Programme.slice(0,15)+'...') 
-        else
-           return color(d.data.Programme); })
+        return d.data.Programme.length>15 ? color(d.data.Programme.slice(0,15) +'...'): color(d.data.Programme)
+      })
+      .attr('title', function(d) {
+        return d.data.Programme + '<br>' + 'Impressions : ' + d.data.Impressions
+      })
       .attr('data-val', function(d) { return d.data.Programme;})
       //.on("click", function(d) { d3.event.stopPropagation(); });
   
@@ -83,5 +91,6 @@ var label = d3.arc()
         .attr("y", height - (10))
         .style('font-size', '11px')
         .text(function(d) { return d; })
+  $('[title]').tooltip({'html': true})
 
 }

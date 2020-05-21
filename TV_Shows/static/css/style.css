@@ -19,7 +19,7 @@ body {
 }
 
 .label {
-  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-anchor: middle;
   text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;*/
 }
@@ -34,17 +34,25 @@ body {
   border-right: 1px solid #D4D4D4;
 }
 
-.tablehead{
-  /*background-color: #510C66;*/
-  /*color:white;*/
-  padding-top: 100px;
-  font-size:13px;
+.card-body {
+  padding-bottom: 0.1rem !important;
 }
-.tablerow{
-  font-size: 13px;
+.table{
+  font-size: 11px;
+  //padding: 0px !important;
+  line-height: 1.1 !important;
 }
-#table_div{
-  margin-top: 5px;
+
+tbody th, table.dataTable tbody td {
+  padding: 10px 5px 5px 5px !important;
+}
+.dataTables_wrapper .dataTables_filter input {
+  border-radius:25px;
+  height: 1.5rem !important;
+  //margin-top: 10px;
+}
+#mydatatable_paginate, #mydatatable_info {
+  font-size: 11px !important;
 }
 
 #cardscript{
@@ -54,12 +62,12 @@ body {
   padding-left: 0px !important;
   padding-right: 25px !important;
 }
-table.dataTable tbody td {
-  padding-left:2px !important;
-  padding-right: 1px !important;
-} 
-
-
+table.dataTable tbody td:nth-child(4), 
+table.dataTable tbody td:nth-child(6), 
+table.dataTable tbody td:nth-child(5) {
+  text-align:right;
+  padding-right: 1.6rem !important;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -81,3 +89,17 @@ table.dataTable tbody td {
   background: #510C66; 
 }
 
+.circlepack-tooltip {
+  background-color: #f3f3f3;
+  padding: 1%;
+  border-radius: 5px;
+  border: 1px solid #535353;
+}
+
+.dropdown-menu {
+  font-size: 13px !important;
+}
+.data-source{
+  margin-top: -1%;
+  font-size: 0.75rem;
+}
