@@ -43,6 +43,9 @@ body {
   line-height: 1.1 !important;
 }
 
+img {
+  height: 160px;
+}
 tbody th, table.dataTable tbody td {
   padding: 10px 5px 5px 5px !important;
 }

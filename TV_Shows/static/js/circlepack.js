@@ -42,7 +42,7 @@ var tooltip = d3.select(selector)
       .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
       .style("fill", function(d) { return d.children ? color(d.depth) : null; })
       .attr('href', function(d) { return depth_map[d.depth] + '$$' +d.data.name})
-      .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); render_template(); render_card_template();})
+      .on("click", function(d) { handle_circle_click(depth_map[d.depth] + '$$' +d.data.name); zoom(d)})
     .on("mouseover", function(d){return tooltip.text(d.data.name).style("visibility", "visible");})
   .on("mousemove", function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX-50)+"px");})
   .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
@@ -99,10 +99,4 @@ var tooltip = d3.select(selector)
 
  
 }
-$('#circlechart circle').on('click', function(){
-  var selected = $(this).attr('href');
-  var pageUrl = '?selected=' + selected;
-  window.history.pushState('', '', pageUrl);
-  render_donut('#donutchart', render_card_template());
-})
 }

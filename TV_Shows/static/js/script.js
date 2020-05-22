@@ -12,7 +12,13 @@ $('body')
     //$('.imageplaceholder > img').attr('src', 'static/images/' + $(this).attr('data-val') + '.jpg')
     render_image($(this).attr('data-val'))
   })
-  
+  function handle_circle_click(d){
+  var selected = d;
+  var pageUrl = '?selected=' + selected;
+  window.history.pushState('', '', pageUrl);
+  render_template();
+  render_donut('#donutchart', render_card_template());
+  }
 
 function render_show_details(show_name) {
     var render_template = $('#cardscript').html('<b>' + show_name);
