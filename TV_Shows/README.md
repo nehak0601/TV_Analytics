@@ -2,8 +2,6 @@
 
 ## Description
 This app is created to show top TV shows at all Genre and channel level.
-
-- This is a tst [test](http://google.com)
  
 ## Installation/ Setup
 Install Anaconda - [link]([https://docs.anaconda.com/anaconda/install/](https://docs.anaconda.com/anaconda/install/))
