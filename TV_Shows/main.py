@@ -74,9 +74,5 @@ def week_names():
 
   return week_list
 
-# def week_with_date():
-# 	weekdate=['Apr 27, 2020 - May 3, 2020','March 30, 2020 - April 5, 2020','April 6, 2020	- April 12, 2020','April 13, 2020 - April 19, 2020','April 20, 2020 -	April 26, 2020']
-# 	return weekdate 
-
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True, port=80)
+    app.run(host='0.0.0.0', debug=True, port=50)
