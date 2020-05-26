@@ -16,10 +16,9 @@ var color = d3.scaleOrdinal(d3.schemeCategory20)
 //     .domain([-1, 5])
 //     .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
 //     .interpolate(d3.interpolateHcl);
-
-  var pack = d3.pack()
-    .size([diameter - margin, diameter - margin])
-    .padding(2);
+var pack = d3.pack()
+  .size([diameter - margin, diameter - margin])
+  .padding(2);
     
 var tooltip = d3.select(selector)
   .append("div")

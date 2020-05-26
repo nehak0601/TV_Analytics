@@ -1,9 +1,10 @@
 {% set week_map = {
-  "18": "Apr 08, 2020 - May 13, 2020",
+  "19": "May 15, 2020 - May 20, 2020",
   "14": "Apr 10, 2020 - Apr 15, 2020",
   "15": "Apr 17, 2020 - Apr 22, 2020",
   "16": "Apr 24, 2020 - Apr 29, 2020",
-  "17": "May 01, 2020 - May 06, 2020"
+  "17": "May 01, 2020 - May 06, 2020",
+  "18": "Apr 08, 2020 - May 13, 2020",
   } %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -50,7 +51,7 @@
         <div class="pl-4">
           <div class="btn-group dropdown-font">
           <button class="small btn btn-secondary btn-sm dropdown-toggle nav-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <b> Week {{ handler.args.get('week', '18') }} :</b> {{ week_map[handler.args.get('week', '18')] }}
+           <b> Week {{ handler.args.get('week', '19') }} :</b> {{ week_map[handler.args.get('week', '19')] }}
           </button>
           <div class="dropdown-menu">
 

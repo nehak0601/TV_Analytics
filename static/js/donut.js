@@ -23,12 +23,6 @@ function render_donut(selector, data){
     
 var color = d3.scaleOrdinal(["#050305", "#821594","#b34ab3","#e5b8f3", "#F5EFF6"]);
 
-var tooltip = d3.select(selector)
-          .append('div')
-          // .attr('class', 'tooltip')
-          .style('display', 'none')
-          .attr('class','donut-tooltip')
-
 var pie = d3.pie()
     .sort(null)
     .value(function(d) { return d.Impressions; });
@@ -91,6 +85,6 @@ var label = d3.arc()
         .attr("y", height - (10))
         .style('font-size', '11px')
         .text(function(d) { return d; })
-  $('[title]').tooltip({'html': true})
 
+  $('[title]').tooltip({'html': true})
 }

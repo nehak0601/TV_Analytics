@@ -1,17 +1,17 @@
 from flask import Flask, render_template, request
-from sqlalchemy import create_engine
+# from sqlalchemy import create_engine
 import pandas as pd
-import numpy as np
 import json
 import os
 import glob
-import collections
+# import collections
 
 script_dir = os.path.dirname(__file__)
 rel_path = "csv_data"
 # rel_path1 = "static\\images"
 abs_file_path = os.path.join(script_dir, rel_path)
 # abs_file_path1 = os.path.join(script_dir, rel_path1)
+
 
 app = Flask(__name__)
 
@@ -75,4 +75,4 @@ def week_names():
   return week_list
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True, port=50)
+    app.run(host='0.0.0.0', debug=True, port=80)
